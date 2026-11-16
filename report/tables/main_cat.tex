@@ -1,0 +1,41 @@
+\begin{tabular}{llllllll}
+\toprule
+Blur & $\delta$ & Model & RE & ISNR & MSSIM & Iters & $\lambda$ / $\epsilon$ \\
+\midrule
+\multirow{15}{*}{Out-of-focus} & \multirow{5}{*}{$2.5\times 10^{-2}$} & TIKH & 0.0785 & 2.659 & 0.6553 & 11 & $2.11\times 10^{-2}$ \\
+ &  & TV & 0.0808 & 2.403 & 0.6345 & 130 & $8.36\times 10^{-4}$ \\
+ &  & TGV & 0.0776 & 2.754 & 0.6578 & 2000 & $7.36\times 10^{-4}$ \\
+ &  & MULTI & \textbf{0.0774} & \textbf{2.779} & \textbf{0.6617} & 3(87) & $\epsilon$=$3.57\times 10^{-3}$ \\
+ &  & MULTI-auto & 0.1025 & 0.344 & 0.5379 & 3(108) & $\epsilon$=$5.61\times 10^{-2}$ \\
+\cmidrule{2-8}
+ & \multirow{5}{*}{$1\times 10^{-2}$} & TIKH & 0.0669 & 3.829 & 0.7371 & 16 & $2.82\times 10^{-3}$ \\
+ &  & TV & 0.0683 & 3.647 & 0.7269 & 105 & $1.85\times 10^{-4}$ \\
+ &  & TGV & 0.0664 & 3.896 & 0.7406 & 760 & $1.63\times 10^{-4}$ \\
+ &  & MULTI & \textbf{0.0654} & \textbf{4.024} & \textbf{0.7469} & 4(120) & $\epsilon$=$3.20\times 10^{-3}$ \\
+ &  & MULTI-auto & 0.0669 & 3.834 & 0.7384 & 4(125) & $\epsilon$=$8.90\times 10^{-3}$ \\
+\cmidrule{2-8}
+ & \multirow{5}{*}{$5\times 10^{-3}$} & TIKH & 0.0574 & 5.138 & 0.8009 & 18 & $5.52\times 10^{-4}$ \\
+ &  & TV & 0.0585 & 4.967 & 0.7984 & 85 & $5.42\times 10^{-5}$ \\
+ &  & TGV & 0.0571 & 5.171 & 0.8060 & 903 & $5.42\times 10^{-5}$ \\
+ &  & MULTI & 0.0571 & 5.171 & 0.7968 & 19(2279) & $\epsilon$=$1.58\times 10^{-5}$ \\
+ &  & MULTI-auto & \textbf{0.0555} & \textbf{5.425} & \textbf{0.8133} & 5(263) & $\epsilon$=$2.55\times 10^{-3}$ \\
+\midrule
+\multirow{15}{*}{Gaussian} & \multirow{5}{*}{$2.5\times 10^{-2}$} & TIKH & 0.0598 & 1.754 & 0.7835 & 40 & $1.41\times 10^{-2}$ \\
+ &  & TV & 0.0630 & 1.309 & 0.7687 & 117 & $1.16\times 10^{-3}$ \\
+ &  & TGV & 0.0612 & 1.550 & 0.7797 & 1113 & $1.03\times 10^{-3}$ \\
+ &  & MULTI & \textbf{0.0587} & \textbf{1.917} & \textbf{0.7926} & 3(70) & $\epsilon$=$2.37\times 10^{-3}$ \\
+ &  & MULTI-auto & 0.0684 & 0.593 & 0.7200 & 2(20) & $\epsilon$=$5.45\times 10^{-2}$ \\
+\cmidrule{2-8}
+ & \multirow{5}{*}{$1\times 10^{-2}$} & TIKH & 0.0511 & 2.674 & 0.8425 & 8 & $1.71\times 10^{-3}$ \\
+ &  & TV & 0.0542 & 2.160 & 0.8311 & 102 & $2.27\times 10^{-4}$ \\
+ &  & TGV & 0.0530 & 2.349 & 0.8379 & 558 & $2.00\times 10^{-4}$ \\
+ &  & MULTI & \textbf{0.0501} & \textbf{2.844} & \textbf{0.8513} & 4(113) & $\epsilon$=$2.65\times 10^{-3}$ \\
+ &  & MULTI-auto & 0.0504 & 2.795 & 0.8470 & 3(109) & $\epsilon$=$1.07\times 10^{-2}$ \\
+\cmidrule{2-8}
+ & \multirow{5}{*}{$5\times 10^{-3}$} & TIKH & 0.0458 & 3.554 & 0.8739 & 4 & $4.30\times 10^{-4}$ \\
+ &  & TV & 0.0491 & 2.952 & 0.8638 & 95 & $6.15\times 10^{-5}$ \\
+ &  & TGV & 0.0482 & 3.123 & 0.8685 & 909 & $5.42\times 10^{-5}$ \\
+ &  & MULTI & \textbf{0.0447} & \textbf{3.763} & \textbf{0.8831} & 12(1343) & $\epsilon$=$1.86\times 10^{-5}$ \\
+ &  & MULTI-auto & 0.0451 & 3.689 & 0.8798 & 4(82) & $\epsilon$=$3.67\times 10^{-3}$ \\
+\bottomrule
+\end{tabular}

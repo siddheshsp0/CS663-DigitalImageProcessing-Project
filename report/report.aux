@@ -1,0 +1,142 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{multi}
+\citation{multi}
+\citation{upen}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Objectives (as approved).}{1}{section*.1}\protected@file@percent }
+\citation{morozov}
+\citation{rof}
+\citation{tgv}
+\citation{multi}
+\@writefile{toc}{\contentsline {paragraph}{Our contributions beyond reproduction.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\newlabel{sec:background}{{2}{2}{Background}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Degradation model.}{2}{section*.3}\protected@file@percent }
+\newlabel{eq:model}{{1}{2}{Degradation model}{equation.1}{}}
+\newlabel{eq:variational}{{2}{2}{Degradation model}{equation.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Periodic boundaries, BCCB matrices and the FFT.}{2}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Classical single-parameter regularisers.}{2}{section*.5}\protected@file@percent }
+\citation{landi2012}
+\@writefile{toc}{\contentsline {section}{\numberline {3}The MULTI method}{3}{section.3}\protected@file@percent }
+\newlabel{sec:multi}{{3}{3}{The MULTI method}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Model}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:multi}{{3}{3}{Model}{equation.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Intuition: the uniform penalty principle.}{3}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Algorithm 1: fixed-point iteration on $\boldsymbol  \lambda $}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Inner solver: modified Newton Projection (NP)}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{eq:H}{{4}{3}{Inner solver: modified Newton Projection (NP)}{equation.4}{}}
+\citation{hno}
+\citation{kodak}
+\citation{ssim}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Top: the four main test images. Bottom: the two PSFs (central $15\times 15$ crop).}}{4}{figure.caption.9}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:testimages}{{1}{4}{Top: the four main test images. Bottom: the two PSFs (central $15\times 15$ crop)}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Implementation notes (our code).}{4}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental setup}{4}{section.4}\protected@file@percent }
+\newlabel{sec:setup}{{4}{4}{Experimental setup}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Test images.}{4}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Degradations.}{4}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Metrics.}{4}{section*.11}\protected@file@percent }
+\citation{admm}
+\citation{cp}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Mean metrics over all problems. ``best ISNR/MSSIM'' counts the problems on which a method is best among all six rows. MULTI-autoS is MULTI-auto with the scale-aware $\epsilon $ of Sec.~\ref {sec:auto}; the Kodak rows are discussed in Sec.~\ref {sec:kodak}. Times are medians in seconds, single-threaded, for the final run only (parameter tuning is not included). MULTI-auto runs once with no tuning, so its time is its entire cost, whereas the tuned methods need 10--20 runs each to choose their parameter.}}{5}{table.caption.15}\protected@file@percent }
+\newlabel{tab:summary}{{1}{5}{Mean metrics over all problems. ``best ISNR/MSSIM'' counts the problems on which a method is best among all six rows. MULTI-autoS is MULTI-auto with the scale-aware $\epsilon $ of Sec.~\ref {sec:auto}; the Kodak rows are discussed in Sec.~\ref {sec:kodak}. Times are medians in seconds, single-threaded, for the final run only (parameter tuning is not included). MULTI-auto runs once with no tuning, so its time is its entire cost, whereas the tuned methods need 10--20 runs each to choose their parameter}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {paragraph}{Baselines and solvers.}{5}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Parameter selection.}{5}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{MULTI settings.}{5}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results: reproducing the paper's comparison}{5}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{5}{Results: reproducing the paper's comparison}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Quantitative comparison}{5}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{MULTI vs.\ TIKH: what pixel-wise adaptivity buys.}{5}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{MULTI vs.\ TGV/TV: it depends on the blur.}{6}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The satellite image.}{6}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Visual study: edges and smooth regions}{6}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Edge vs.\ flat error decomposition.}{6}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What the $\lambda $ map looks like.}{6}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Sensitivity and convergence of MULTI}{6}{section.6}\protected@file@percent }
+\newlabel{sec:ablation}{{6}{6}{Sensitivity and convergence of MULTI}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}The threshold $\epsilon $}{6}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Out-of-focus blur, $\delta =10^{-2}$. Below each image: ISNR (dB) / MSSIM.}}{7}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:rest-oof}{{2}{7}{Out-of-focus blur, $\delta =10^{-2}$. Below each image: ISNR (dB) / MSSIM}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Gaussian blur, $\delta =10^{-2}$.}}{7}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:rest-gauss}{{3}{7}{Gaussian blur, $\delta =10^{-2}$}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Zoomed crops (Gaussian blur, $\delta =10^{-2}$). Note TV's patchy fur and forehead texture, and the finer texture retained by MULTI.}}{8}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:zooms}{{4}{8}{Zoomed crops (Gaussian blur, $\delta =10^{-2}$). Note TV's patchy fur and forehead texture, and the finer texture retained by MULTI}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The neighbourhood size $R$}{8}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Convergence of Algorithm~1}{8}{subsection.6.3}\protected@file@percent }
+\citation{engl}
+\citation{morozov}
+\citation{donoho}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces RMSE on edge and flat pixels relative to TGV (below 1 is better).}}{9}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:regions}{{5}{9}{RMSE on edge and flat pixels relative to TGV (below 1 is better)}{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Line profiles (out-of-focus, $\delta =10^{-2}$) and their locations.}}{9}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:profiles}{{6}{9}{Line profiles (out-of-focus, $\delta =10^{-2}$) and their locations}{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Final regularisation-parameter maps $\lambda _i$ of MULTI (log colour scale, out-of-focus, $\delta =10^{-2}$). Dark means small $\lambda $, i.e.\ little smoothing.}}{9}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:lambda}{{7}{9}{Final regularisation-parameter maps $\lambda _i$ of MULTI (log colour scale, out-of-focus, $\delta =10^{-2}$). Dark means small $\lambda $, i.e.\ little smoothing}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Extension 1: $\lambda $-collapse and a noise-floor safeguard}{9}{section.7}\protected@file@percent }
+\newlabel{sec:collapse}{{7}{9}{Extension 1: $\lambda $-collapse and a noise-floor safeguard}{section.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Fix, first attempt: discrepancy stop.}{9}{section*.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Absolute error maps (out-of-focus, $\delta =10^{-2}$, common colour scale per row). TIKH's error is spread over the flat regions; the errors of all the other methods concentrate on edges.}}{10}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:errmaps}{{8}{10}{Absolute error maps (out-of-focus, $\delta =10^{-2}$, common colour scale per row). TIKH's error is spread over the flat regions; the errors of all the other methods concentrate on edges}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {paragraph}{Fix, final: a noise floor in the $\lambda $ rule.}{10}{section*.29}\protected@file@percent }
+\newlabel{eq:floor}{{5}{10}{Fix, final: a noise floor in the $\lambda $ rule}{equation.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Left: RE vs.\ $\epsilon $ for cat (solid: out-of-focus, dashed: Gaussian). Right: the best $\epsilon $ of every problem against the estimated noise variance. The best $\epsilon $ clusters by image, not along the line $\epsilon \propto \hat  \sigma ^2$.}}{11}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:eps}{{9}{11}{Left: RE vs.\ $\epsilon $ for cat (solid: out-of-focus, dashed: Gaussian). Right: the best $\epsilon $ of every problem against the estimated noise variance. The best $\epsilon $ clusters by image, not along the line $\epsilon \propto \hat \sigma ^2$}{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces RE (relative to the best $R$) vs.\ neighbourhood size; $\epsilon $ re-tuned for each $R$.}}{11}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:R}{{10}{11}{RE (relative to the best $R$) vs.\ neighbourhood size; $\epsilon $ re-tuned for each $R$}{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Algorithm~1 histories (out-of-focus, $\delta =10^{-2}$, oracle $\epsilon $, $\mathrm  {Tol}=0$).}}{11}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:conv}{{11}{11}{Algorithm~1 histories (out-of-focus, $\delta =10^{-2}$, oracle $\epsilon $, $\mathrm {Tol}=0$)}{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Extension 2: fully automatic MULTI (MULTI-auto)}{11}{section.8}\protected@file@percent }
+\newlabel{sec:auto}{{8}{11}{Extension 2: fully automatic MULTI (MULTI-auto)}{section.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Results on the main set.}{11}{section*.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A scale-aware alternative.}{11}{section*.34}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces MULTI-auto on the 24 main problems with each $\lambda $-collapse safeguard ($\kappa $ re-calibrated for each variant on its own $\epsilon $-sweep, except ``none'', which uses our initial calibration). ISNR and MSSIM are means; ``worst'' is the worst single problem; ``loss'' is the mean ISNR gap to oracle-tuned MULTI, and the last column counts the problems within 0.5\,dB of it. The last row is MULTI-autoS (Sec.~\ref {sec:auto}).}}{12}{table.caption.30}\protected@file@percent }
+\newlabel{tab:variants}{{2}{12}{MULTI-auto on the 24 main problems with each $\lambda $-collapse safeguard ($\kappa $ re-calibrated for each variant on its own $\epsilon $-sweep, except ``none'', which uses our initial calibration). ISNR and MSSIM are means; ``worst'' is the worst single problem; ``loss'' is the mean ISNR gap to oracle-tuned MULTI, and the last column counts the problems within 0.5\,dB of it. The last row is MULTI-autoS (Sec.~\ref {sec:auto})}{table.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces $\lambda $-collapse of MULTI with automatic $\epsilon $ and no safeguard (out-of-focus, $\delta =0.5\%$). Once the residual crosses the noise level (dashed), $\|\boldsymbol  \lambda \|$ keeps decaying and RE grows. Stars: where the discrepancy stop (our first fix) would end the iteration.}}{12}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:collapse}{{12}{12}{$\lambda $-collapse of MULTI with automatic $\epsilon $ and no safeguard (out-of-focus, $\delta =0.5\%$). Once the residual crosses the noise level (dashed), $\|\boldsymbol \lambda \|$ keeps decaying and RE grows. Stars: where the discrepancy stop (our first fix) would end the iteration}{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {paragraph}{Full runs: MULTI-autoS.}{12}{section*.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Extension 3: generalisation to unseen Kodak images}{12}{section.9}\protected@file@percent }
+\newlabel{sec:kodak}{{9}{12}{Extension 3: generalisation to unseen Kodak images}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Extension 4: colour images}{12}{section.10}\protected@file@percent }
+\newlabel{sec:color}{{10}{12}{Extension 4: colour images}{section.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Left: RE vs.\ $\epsilon $ on the collapse case for plain MULTI and both safeguards. Middle: noise-floor RE$(\epsilon )$ for all 24 problems, relative to the best RE of plain MULTI. Right: calibration of $\kappa $ (mean and median relative RE loss over the 24 problems).}}{13}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:epssafe}{{13}{13}{Left: RE vs.\ $\epsilon $ on the collapse case for plain MULTI and both safeguards. Middle: noise-floor RE$(\epsilon )$ for all 24 problems, relative to the best RE of plain MULTI. Right: calibration of $\kappa $ (mean and median relative RE loss over the 24 problems)}{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces The 12 Kodak generalisation images (grayscale, $256^2$).}}{13}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:kodak}{{14}{13}{The 12 Kodak generalisation images (grayscale, $256^2$)}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Insights and limitations}{13}{section.11}\protected@file@percent }
+\newlabel{sec:insights}{{11}{13}{Insights and limitations}{section.11}{}}
+\bibstyle{plain}
+\bibdata{refs}
+\bibcite{upen}{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Kodak: per-problem ISNR and MSSIM difference with respect to oracle TGV.}}{14}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:kodakgain}{{15}{14}{Kodak: per-problem ISNR and MSSIM difference with respect to oracle TGV}{figure.caption.37}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Kodak: mean ISNR (dB) per blur.}}{14}{table.caption.38}\protected@file@percent }
+\newlabel{tab:kodak}{{3}{14}{Kodak: mean ISNR (dB) per blur}{table.caption.38}{}}
+\@writefile{toc}{\contentsline {paragraph}{Limitations of our study.}{14}{section*.40}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}Conclusion}{14}{section.12}\protected@file@percent }
+\newlabel{sec:conclusion}{{12}{14}{Conclusion}{section.12}{}}
+\bibcite{multi}{2}
+\bibcite{admm}{3}
+\bibcite{tgv}{4}
+\bibcite{cp}{5}
+\bibcite{donoho}{6}
+\bibcite{kodak}{7}
+\bibcite{engl}{8}
+\bibcite{hno}{9}
+\bibcite{landi2012}{10}
+\bibcite{morozov}{11}
+\bibcite{rof}{12}
+\bibcite{ssim}{13}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Colour restoration (out-of-focus, $\delta =1\%$), channel-wise. Below each image: PSNR / SSIM.}}{15}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:color}{{16}{15}{Colour restoration (out-of-focus, $\delta =1\%$), channel-wise. Below each image: PSNR / SSIM}{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Per-problem results}{16}{appendix.A}\protected@file@percent }
+\newlabel{app:tables}{{A}{16}{Per-problem results}{appendix.A}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces satellite ($R=3$).}}{16}{table.caption.42}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces ct\_head.}}{17}{table.caption.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces cat.}}{17}{table.caption.44}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces portrait.}}{18}{table.caption.45}\protected@file@percent }
+\gdef \@abspage@last{18}

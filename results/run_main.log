@@ -1,0 +1,49 @@
+phase1 satellite_gauss_0.025 done
+phase1 satellite_gauss_0.01 done
+phase1 satellite_oof_0.025 done
+phase1 portrait_gauss_0.01 done
+phase1 satellite_oof_0.01 done
+phase1 portrait_oof_0.025 done
+phase1 portrait_oof_0.01 done
+phase1 satellite_oof_0.005 done
+phase1 ct_head_gauss_0.025 done
+phase1 cat_oof_0.025 done
+phase1 cat_oof_0.01 done
+phase1 portrait_gauss_0.005 done
+phase1 cat_gauss_0.01 done
+phase1 cat_gauss_0.025 done
+phase1 cat_oof_0.005 done
+phase1 ct_head_gauss_0.01 done
+phase1 ct_head_gauss_0.005 done
+phase1 cat_gauss_0.005 done
+phase1 ct_head_oof_0.025 done
+phase1 satellite_gauss_0.005 done
+phase1 portrait_gauss_0.025 done
+phase1 ct_head_oof_0.01 done
+phase1 ct_head_oof_0.005 done
+phase1 portrait_oof_0.005 done
+kappa = median(eps_opt/sigma_hat^2) = 78.738   (range 2.11 .. 121317.77)
+phase3 portrait_oof_0.025
+phase3 portrait_oof_0.01
+phase3 portrait_oof_0.005
+phase3 portrait_gauss_0.025
+phase3 portrait_gauss_0.01
+phase3 portrait_gauss_0.005
+phase3 satellite_oof_0.025
+phase3 satellite_oof_0.01
+phase3 satellite_oof_0.005
+phase3 satellite_gauss_0.025
+phase3 satellite_gauss_0.01
+phase3 satellite_gauss_0.005
+phase3 ct_head_oof_0.025
+phase3 ct_head_oof_0.01
+phase3 ct_head_oof_0.005
+phase3 ct_head_gauss_0.025
+phase3 ct_head_gauss_0.01
+phase3 ct_head_gauss_0.005
+phase3 cat_oof_0.025
+phase3 cat_oof_0.01
+phase3 cat_oof_0.005
+phase3 cat_gauss_0.025
+phase3 cat_gauss_0.01
+phase3 cat_gauss_0.005

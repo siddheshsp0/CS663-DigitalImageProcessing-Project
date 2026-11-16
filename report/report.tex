@@ -1,0 +1,70 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=MidnightBlue,citecolor=MidnightBlue,urlcolor=MidnightBlue]{hyperref}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\parskip}{2pt}
+\input{numbers}
+\input{missing}
+% a figure/table that has not been generated yet shows up as a red box
+\let\oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{\IfFileExists{#2}{\oldincludegraphics[#1]{#2}}{\fbox{\textcolor{red}{missing: \detokenize{#2}}}}}
+\newcommand{\inputtable}[1]{\IfFileExists{#1}{\input{#1}}{\fbox{\textcolor{red}{missing: \detokenize{#1}}}}}
+
+\title{\textbf{Automatic Pixel-Wise Multi-Penalty Regularization\\for Image Deblurring and Denoising}\\[4pt]
+\large CS663 Digital Image Processing --- Course Project}
+\author{Kushagra Kushwaha (24b2191) \and Siddhesh Sangram Phadke (24b4502)}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We re-implement from scratch, in Python, the MULTI method of Bortolotti, Landi
+and Zama~\cite{multi}. MULTI restores a blurred, noisy image by giving
+\emph{every pixel its own} Tikhonov regularisation weight and choosing all $N$
+weights automatically through a ``uniform penalty'' fixed-point rule. The model
+is solved by an outer fixed-point loop on the weights, and the inner problem is
+solved by a Newton Projection method whose Hessian is approximated by an
+FFT-diagonalisable (BCCB) matrix. We reproduce the paper's protocol (Gaussian and
+out-of-focus blur, three noise levels, four image types) and compare against
+Tikhonov, Total Variation and Total Generalised Variation solvers that we also
+wrote ourselves. Beyond reproduction, we
+(i) measure edge-region versus flat-region errors and line profiles to explain
+\emph{where} MULTI wins;
+(ii) map MULTI's sensitivity to $\epsilon$ and to the neighbourhood size $R$;
+(iii) find and explain a failure mode we call \emph{$\lambda$-collapse}, a
+positive feedback loop between the residual and the weights that makes the
+fixed-point iteration semi-convergent, and fix it by flooring the rule's noise
+estimate at a robust (MAD) noise level, which removes the catastrophic failures at no cost;
+(iv) build a fully automatic, ground-truth-free variant (MULTI-auto), improve it with an
+$\epsilon$ that follows the image's curvature scale (MULTI-autoS), and test both on unseen
+Kodak images; and
+(v) extend MULTI to colour images.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/method}
+\input{sections/setup}
+\input{sections/results}
+\input{sections/extensions}
+\input{sections/insights}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\clearpage
+\input{sections/appendix}
+
+\end{document}

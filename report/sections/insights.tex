@@ -1,0 +1,67 @@
+\section{Insights and limitations}
+\label{sec:insights}
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{A quadratic penalty with the right weights is competitive with
+  non-smooth regularisers.} MULTI uses the oldest penalty there is,
+  $\|L\mathbf u\|^2$, yet it matches or beats TGV whenever the blur has no spectral
+  zeros. The weights do the edge-preserving job that the $\ell_1$ norm does in TV/TGV,
+  and they avoid TV's contrast loss and staircasing. Each subproblem stays a smooth
+  quadratic, so it can be solved with a Newton-type method and FFTs.
+
+\item \textbf{The prior matters most where the blur destroys information.} Under
+  out-of-focus blur, whose PSF has spectral zeros, the sparsity prior of TGV fills in
+  the lost frequencies better. This is a limit of the quadratic model, not of the
+  solver, and it suggests that applying pixel-wise weights to a TGV penalty could
+  combine the strengths of both.
+
+\item \textbf{``Automatic'' fixed-point rules can be semi-convergent.} The
+  uniform-penalty update uses the current residual as its noise estimate. If the
+  solution over-fits, the estimate is biased low and the error feeds back on itself
+  ($\lambda$-collapse). Flooring that estimate at an external (MAD) noise level fixes
+  this at negligible cost, and works better than simply stopping at the discrepancy level,
+  which halts the adaptation too early. We consider this the most practically
+  important finding of the project.
+
+\item \textbf{$\epsilon$ is an image-scale parameter, not a noise parameter.}
+  The best $\epsilon$ varies by three decades between images but hardly with the
+  noise level. A single constant times $\hat\sigma^2$ works only because the
+  RE$(\epsilon)$ curve is flat on its small-$\epsilon$ side, especially with the
+  safeguard. Setting $\epsilon$ from the curvature scale of a cheap pilot restoration
+  (MULTI-autoS) fixes the rule's failures at high noise: on held-out Kodak images at
+  $\delta=2.5\%$ it gains \nKRHiGain\,dB over $\kappa\hat\sigma^2$.
+
+\item \textbf{Cost.} One MULTI run costs about as much as TGV (tens of seconds in our
+  single-threaded Python). Its cost is dominated by NP iterations, which increase when
+  $\boldsymbol\lambda$ is very heterogeneous (the mean-$\lambda$ BCCB preconditioner then
+  fits poorly) and when many pixels sit on the bound $u=0$ (satellite).
+  A better preconditioner, for example a few CG steps on the true Hessian, could
+  reduce this cost.
+\end{enumerate}
+
+\paragraph{Limitations of our study.}
+(i) We used freely available stand-ins for the paper's four test images, so our
+numbers are not directly comparable with the paper's tables; the qualitative
+pattern is what we reproduce.
+(ii) Our TV/TGV solvers are our own ADMM/PDHG codes rather than the paper's MATLAB packages.
+We checked their convergence (TGV with 3$\times$ more iterations changes RE only in the 4th digit).
+(iii) The oracle comparison is best-case for every method and does not reflect how
+$\lambda$ would be chosen in practice. Only MULTI-auto is a fair real-world method.
+(iv) To limit compute on a laptop, the Kodak study uses one noise level and
+the $R$ sweep five values of $R$.
+
+\section{Conclusion}
+\label{sec:conclusion}
+We implemented the MULTI pixel-wise multi-penalty method and its Newton Projection
+solver from scratch, and reproduced the paper's main finding on our four test images: MULTI is
+best under Gaussian blur, while TGV keeps the edge under out-of-focus blur, and MULTI
+improves substantially on Tikhonov with the same penalty. On small, texture-rich Kodak
+photographs the blur dependence persists but TGV is slightly ahead under both blurs. Our edge/flat analysis shows
+that MULTI's gain comes from preserving detail at high-curvature pixels. Our
+sensitivity study shows that $\epsilon$ is tied to image content and that $R=5$ is a
+safe default. Most importantly, we found that the automatic $\lambda$ update can
+collapse, explained the mechanism, and fixed it with a noise floor in the $\lambda$ rule.
+The resulting MULTI-auto, which has no tuned parameter and needs no ground truth,
+stays close to oracle-tuned MULTI and generalises to unseen images and to colour, and
+choosing $\epsilon$ from the image's curvature scale (MULTI-autoS) makes it reliable at
+high noise as well.

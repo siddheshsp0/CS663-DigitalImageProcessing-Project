@@ -1,0 +1,10 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+Variant & $\kappa$ & ISNR & worst ISNR & MSSIM & loss (dB) & within 0.5\,dB \\
+\midrule
+none (Tol only) & 79 & 5.70 & -1.61 & 0.878 & 0.89 & 16/24 \\
+discrepancy stop & 3162 & 4.74 & -2.85 & 0.841 & 1.85 & 6/24 \\
+noise floor (ours) & 398 & 5.97 & 0.07 & 0.874 & 0.62 & 14/24 \\
+floor + scale-aware $\epsilon$ (autoS) & -- & 6.26 & 1.86 & 0.894 & 0.33 & 20/24 \\
+\bottomrule
+\end{tabular}

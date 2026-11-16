@@ -1,0 +1,25 @@
+kappa = 398.11  (mean RE loss 9.06%)
+auto satellite_oof_0.025
+auto satellite_oof_0.01
+auto satellite_oof_0.005
+auto satellite_gauss_0.025
+auto satellite_gauss_0.01
+auto satellite_gauss_0.005
+auto ct_head_oof_0.025
+auto ct_head_oof_0.01
+auto ct_head_oof_0.005
+auto ct_head_gauss_0.025
+auto ct_head_gauss_0.01
+auto ct_head_gauss_0.005
+auto cat_oof_0.025
+auto cat_oof_0.01
+auto cat_oof_0.005
+auto cat_gauss_0.025
+auto cat_gauss_0.01
+auto cat_gauss_0.005
+auto portrait_oof_0.025
+auto portrait_oof_0.01
+auto portrait_oof_0.005
+auto portrait_gauss_0.025
+auto portrait_gauss_0.01
+auto portrait_gauss_0.005

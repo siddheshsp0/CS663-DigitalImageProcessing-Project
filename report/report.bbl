@@ -1,0 +1,74 @@
+\begin{thebibliography}{10}
+
+\bibitem{upen}
+Villiam Bortolotti, Robert J.~S. Brown, Paola Fantazzini, Germana Landi, and
+  Fabiana Zama.
+\newblock Uniform penalty inversion of two-dimensional {NMR} relaxation data.
+\newblock {\em Inverse Problems}, 33(1):015003, 2017.
+
+\bibitem{multi}
+Villiam Bortolotti, Germana Landi, and Fabiana Zama.
+\newblock An automatic pixel-wise multi-penalty approach to image restoration.
+\newblock {\em Journal of Imaging}, 9(11):249, 2023.
+
+\bibitem{admm}
+Stephen Boyd, Neal Parikh, Eric Chu, Borja Peleato, and Jonathan Eckstein.
+\newblock Distributed optimization and statistical learning via the alternating
+  direction method of multipliers.
+\newblock {\em Foundations and Trends in Machine Learning}, 3(1):1--122, 2011.
+
+\bibitem{tgv}
+Kristian Bredies, Karl Kunisch, and Thomas Pock.
+\newblock Total generalized variation.
+\newblock {\em SIAM Journal on Imaging Sciences}, 3(3):492--526, 2010.
+
+\bibitem{cp}
+Antonin Chambolle and Thomas Pock.
+\newblock A first-order primal-dual algorithm for convex problems with
+  applications to imaging.
+\newblock {\em Journal of Mathematical Imaging and Vision}, 40:120--145, 2011.
+
+\bibitem{donoho}
+David~L. Donoho and Iain~M. Johnstone.
+\newblock Ideal spatial adaptation by wavelet shrinkage.
+\newblock {\em Biometrika}, 81(3):425--455, 1994.
+
+\bibitem{kodak}
+{Eastman Kodak}.
+\newblock Kodak lossless true color image suite.
+\newblock \url{https://r0k.us/graphics/kodak/}, 1999.
+
+\bibitem{engl}
+Heinz~W. Engl, Martin Hanke, and Andreas Neubauer.
+\newblock {\em Regularization of Inverse Problems}.
+\newblock Kluwer, 1996.
+
+\bibitem{hno}
+Per~Christian Hansen, James~G. Nagy, and Dianne~P. O'Leary.
+\newblock {\em Deblurring Images: Matrices, Spectra, and Filtering}.
+\newblock SIAM, 2006.
+
+\bibitem{landi2012}
+Germana Landi and Elena Loli~Piccolomini.
+\newblock {NPTool}: a {Matlab} software for nonnegative image restoration with
+  {Newton} projection methods.
+\newblock {\em Numerical Algorithms}, 62:487--504, 2013.
+
+\bibitem{morozov}
+V.~A. Morozov.
+\newblock On the solution of functional equations by the method of
+  regularization.
+\newblock {\em Soviet Mathematics Doklady}, 7:414--417, 1966.
+
+\bibitem{rof}
+Leonid~I. Rudin, Stanley Osher, and Emad Fatemi.
+\newblock Nonlinear total variation based noise removal algorithms.
+\newblock {\em Physica D}, 60:259--268, 1992.
+
+\bibitem{ssim}
+Zhou Wang, Alan~C. Bovik, Hamid~R. Sheikh, and Eero~P. Simoncelli.
+\newblock Image quality assessment: from error visibility to structural
+  similarity.
+\newblock {\em IEEE Transactions on Image Processing}, 13(4):600--612, 2004.
+
+\end{thebibliography}

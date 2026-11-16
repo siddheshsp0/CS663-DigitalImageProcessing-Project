@@ -1,0 +1,21 @@
+
+\paragraph{Full runs: MULTI-autoS.} The sweep curves are only a proxy (2000-NP cap), so we also
+ran the rule for real. MULTI-autoS uses $\epsilon=c\,Q_{\nScaleBest}(S(\mathbf u_{\rm pilot}))$
+with $c=\nScaleC$, the noise floor and the full budget; nothing else changes. On the main set
+(where $c$ is in-sample) it is on average \nMainAutoSLoss\,dB below oracle MULTI, against
+\nMainAutoLoss\,dB for MULTI-auto; it is within 0.5\,dB of the oracle on
+\nMainAutoSWithinHalf/\nMainN{} problems (MULTI-auto: \nMainAutoWithinHalf), and its worst RE
+loss drops from \nMainAutoRelLossMax\% to \nMainAutoSRelLossMax\%
+(Table~\ref{tab:variants}, last row). The gain is concentrated at $\delta=2.5\%$, exactly where
+$\kappa\hat\sigma^2$ overshoots.
+
+For a held-out test we ran both automatic rules on the 12 Kodak images at the two noise levels
+where they differ (no oracle needed). At $\delta=2.5\%$, MULTI-autoS is better on
+\nKRHiWins/\nKRHiN{} problems, by \nKRHiGain\,dB ISNR on average (up to \nKRHiBestGain\,dB;
+mean RE change \nKRHiRelRE\%). At $\delta=0.5\%$ the two rules are level
+(\nKRLoGain\,dB on average, better on \nKRLoWins/\nKRLoN{}, worst \nKRLoWorstGain\,dB), and at
+$\delta=1\%$, where $\kappa$ is effectively calibrated, they are also level
+(\nISNRKodakAutoS{} vs.\ \nISNRKodakAuto\,dB, Table~\ref{tab:kodak}). So the scale-aware rule
+removes the high-noise failure of $\kappa\hat\sigma^2$ with no systematic loss elsewhere, at the cost of
+one pilot solve (about 40 FFTs). We keep $\kappa\hat\sigma^2$ as ``MULTI-auto'' in the main
+tables because it was fixed before these experiments; MULTI-autoS is reported alongside it.

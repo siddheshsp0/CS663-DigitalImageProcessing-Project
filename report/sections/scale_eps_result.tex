@@ -1,0 +1,11 @@
+With $\epsilon$ read off the sweep curves, the best quantile ($q=\nScaleBest$, $c\approx\nScaleC$
+when fitted on all four images) gives a mean held-out RE loss of \nLoioBestMean\% with respect
+to the per-problem oracle $\epsilon$ (median \nLoioBestMedian\%, worst \nLoioBestMax\%). The
+$\kappa\hat\sigma^2$ rule, evaluated the same way, gives \nLoioSigMean\% (median
+\nLoioSigMedian\%, worst \nLoioSigMax\%). Per held-out image, the scale-aware rule loses
+\nLoioBestCat\% (cat), \nLoioBestPortrait\% (portrait), \nLoioBestCthead\% (ct\_head) and
+\nLoioBestSatellite\% (satellite), against \nLoioSigCat\%, \nLoioSigPortrait\%,
+\nLoioSigCthead\% and \nLoioSigSatellite\% for $\kappa\hat\sigma^2$. Satellite is the hardest
+case for both rules: its best $\epsilon$ lies at the upper end of the sweep grid, and at small
+$\epsilon$ many of its sweep runs hit the NP budget, so its curves are the least reliable.
+\input{sections/autos_result}

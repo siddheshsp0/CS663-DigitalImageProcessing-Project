@@ -1,0 +1,56 @@
+\section{Introduction}
+\label{sec:intro}
+
+Out-of-focus optics, atmospheric turbulence and motion all blur images, and every
+sensor adds noise. Recovering the sharp image is an ill-posed inverse problem.
+Inverse filtering divides by the blur's frequency response, which is close to
+zero at high frequencies, so the noise explodes (as seen in the Fourier and
+denoising parts of the course). Variational methods stabilise the inversion by
+adding a regularisation term weighted by a parameter $\lambda$. Two
+difficulties remain:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item \textbf{Choosing $\lambda$.} Too small amplifies noise, too large
+  over-smooths. In practice $\lambda$ is tuned by hand, or by looking at
+  the ground truth, which is not available in real use.
+\item \textbf{One $\lambda$ for the whole image.} Flat regions would benefit from
+  strong smoothing and edges from almost none. A single global weight has to
+  compromise between the two. Edge-preserving regularisers such as TV and TGV
+  work around this with non-quadratic penalties, but they still have one
+  global $\lambda$, and they bring their own artefacts (staircasing for TV).
+\end{enumerate}
+
+MULTI~\cite{multi} tackles both at once. It keeps the simplest, quadratic
+Laplacian penalty but uses $N$ weights $\lambda_i$, one per pixel. All of them
+are set automatically by a closed-form rule, derived from the \emph{uniform
+penalty} principle~\cite{upen}, which makes $\lambda_i$ inversely proportional
+to the local curvature of the restored image. Only one scalar, $\epsilon$,
+remains to be chosen.
+
+\paragraph{Objectives (as approved).}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Implement MULTI (Algorithm~1 of the paper) together with its Newton Projection
+  inner solver, using a BCCB/FFT Hessian approximation.
+\item Test it on Gaussian and out-of-focus (radius~5) blur at noise levels
+  $0.5\%$, $1\%$ and $2.5\%$, and compare against Tikhonov, TV and TGV using RE,
+  ISNR and SSIM, with a visual study of edges and smooth regions.
+\item If time permits: sensitivity to the neighbourhood size and to $\epsilon$;
+  colour images; generalisation to other datasets (Kodak).
+\end{itemize}
+All objectives were completed, and the optional ones are covered in
+Secs.~\ref{sec:ablation}--\ref{sec:color}.
+
+\paragraph{Our contributions beyond reproduction.}
+Following the instructor's advice to be creative in evaluation and insight:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item An \emph{edge vs.\ flat} error decomposition, line profiles and $\lambda$-maps,
+  which show \emph{where} pixel-wise adaptivity helps and where it does not.
+\item A dense $\epsilon$-sweep, which shows that the best $\epsilon$ is set mainly by
+  the \emph{image content}, not by the noise level.
+\item The discovery and analysis of \emph{$\lambda$-collapse}, a semi-convergence of
+  Algorithm~1 that the paper does not discuss, and a one-line fix (a noise floor
+  in the $\lambda$ rule, in the spirit of the discrepancy principle~\cite{morozov})
+  that removes the catastrophic failures without hurting the good cases.
+\item MULTI-auto: a variant with no hand-tuned parameter and no ground truth, and
+  MULTI-autoS, which sets $\epsilon$ from the curvature scale of a cheap pilot restoration;
+  both are evaluated on held-out Kodak images. Plus a channel-wise colour extension.
+\end{itemize}

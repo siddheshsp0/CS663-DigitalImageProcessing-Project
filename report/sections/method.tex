@@ -1,0 +1,141 @@
+\section{Background}
+\label{sec:background}
+
+\paragraph{Degradation model.}
+A blurred and noisy observation $\mathbf b\in\mathbb R^N$ of an unknown image
+$\mathbf u\in\mathbb R^N$ (both vectorised, $N=n_x n_y$) is modelled as
+\begin{equation}
+  A\mathbf u + \mathbf e = \mathbf b ,
+  \label{eq:model}
+\end{equation}
+where $A$ is the convolution with the point spread function (PSF) and $\mathbf e$
+is white Gaussian noise. We use the noise level $\delta=\|\mathbf e\|/\|A\mathbf u\|$,
+as in the paper. Inverting $A$ directly (inverse filtering) amplifies noise at the
+frequencies where $|\hat A|$ is small. The problem is ill-posed, so it must be
+\emph{regularised}:
+\begin{equation}
+  \min_{\mathbf u\ge 0}\ \tfrac12\|A\mathbf u-\mathbf b\|^2 + \mathcal R(\mathbf u).
+  \label{eq:variational}
+\end{equation}
+
+\paragraph{Periodic boundaries, BCCB matrices and the FFT.}
+With periodic boundary conditions, every convolution (the blur $A$, the discrete
+Laplacian $L$ and the finite-difference gradient $D$) is a block-circulant
+matrix with circulant blocks (BCCB). The 2-D DFT diagonalises all of them
+simultaneously (the convolution theorem from the Fourier-transform lectures):
+$A=F^{*}\operatorname{diag}(\hat a)F$, $L=F^{*}\operatorname{diag}(\hat\ell)F$, with
+$\hat a=\mathrm{fft2}(\text{PSF})$ and
+$\hat\ell_{pq}=2\cos(2\pi p/n_x)+2\cos(2\pi q/n_y)-4$.
+Any matrix of the form $A^TA+\mu L^TL$ is therefore inverted in $O(N\log N)$ by
+\[
+(A^TA+\mu L^TL)^{-1}\mathbf g
+  = F^{*}\!\left[\frac{F\mathbf g}{|\hat a|^2+\mu\,\hat\ell^{\,2}}\right].
+\]
+We use this fact both in MULTI's inner solver and in all of the baselines.
+
+\paragraph{Classical single-parameter regularisers.}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \textbf{Tikhonov (TIKH):} $\mathcal R=\frac{\lambda}{2}\|L\mathbf u\|^2$.
+  It is quadratic and fast, but it penalises edges as much as noise, so it
+  over-smooths edges.
+\item \textbf{Total variation (TV)}~\cite{rof}: $\mathcal R=\lambda\sum_i\|(D\mathbf u)_i\|_2$.
+  It preserves edges, but it favours piecewise-constant solutions, which shows up as
+  \emph{staircasing} in smooth ramps.
+\item \textbf{Total generalised variation (TGV$^2$)}~\cite{tgv}:
+  $\mathcal R=\min_{\mathbf v}\ \alpha_1\|D\mathbf u-\mathbf v\|_{1}+\alpha_0\|\mathcal E\mathbf v\|_{1}$,
+  where $\mathcal E$ is the symmetrised gradient. It favours piecewise-\emph{affine}
+  images, which removes the staircasing of TV. It is the strongest baseline in the paper.
+\end{itemize}
+Each of these methods has a single global $\lambda$. It has to be hand-tuned, and
+the same amount of smoothing is applied to flat regions, textures and edges.
+
+\section{The MULTI method}
+\label{sec:multi}
+
+\subsection{Model}
+MULTI~\cite{multi} uses one regularisation parameter \emph{per pixel}
+($p=N$ penalties in the multi-penalty framework
+$\mathcal R=\sum_i\lambda_i\psi_i$) and sets them automatically:
+\begin{equation}
+\begin{aligned}
+\mathbf u^{*} &= \arg\min_{\mathbf u\ge 0}\ \tfrac12\|A\mathbf u-\mathbf b\|^2
+     + \tfrac12\sum_{i=1}^{N}\lambda_i^{*}(L\mathbf u)_i^2, \\
+\lambda_i^{*} &= \frac{\|A\mathbf u^{*}-\mathbf b\|^2}{N\big(S_i+\epsilon\big)},
+\qquad S_i=\max_{j\in\mathcal N_i}(L\mathbf u^{*})_j^2 ,
+\end{aligned}
+\label{eq:multi}
+\end{equation}
+where $\mathcal N_i$ is the $R\times R$ window centred on pixel $i$ and
+$\epsilon>0$ is a small threshold.
+
+\paragraph{Intuition: the uniform penalty principle.}
+Wherever $S_i\gg\epsilon$, equation~\eqref{eq:multi} gives
+$\lambda_i (L\mathbf u)_i^2\approx\|A\mathbf u-\mathbf b\|^2/N$. Every pixel then
+pays roughly the \emph{same} penalty, equal to the mean squared residual (that is,
+the noise variance $\sigma^2$ at the discrepancy level). The weight
+$\lambda_i$ is therefore \emph{inversely proportional to the local curvature}:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item at edges and fine structures $|L\mathbf u|$ is large, so $\lambda_i$ is small
+  and the detail is preserved;
+\item in flat regions $|L\mathbf u|\approx 0$, so $\lambda_i\to\|A\mathbf u-\mathbf b\|^2/(N\epsilon)$,
+  which is large, and noise is smoothed strongly.
+\end{itemize}
+The $R\times R$ max filter widens the low-$\lambda$ zone around an edge, since the
+Laplacian of an edge is a thin double ridge that passes through zero exactly at the
+edge. The constant $\epsilon$ caps the largest $\lambda$ and decides which
+curvatures count as ``flat''. Note that MULTI with a constant $\lambda$ \emph{is}
+TIKH with the same Laplacian penalty. Our TIKH baseline therefore isolates exactly
+what the pixel-wise adaptivity contributes.
+
+\subsection{Algorithm 1: fixed-point iteration on $\boldsymbol\lambda$}
+Starting from $\mathbf u^{(0)}=\mathbf b$, with
+$\boldsymbol\lambda^{(0)}$ given by~\eqref{eq:multi}, repeat:
+
+\begin{center}
+\fbox{\begin{minipage}{0.92\linewidth}
+\begin{enumerate}[leftmargin=*,itemsep=1pt,label=\arabic*:]
+\item $\mathbf u^{(k+1)}=\arg\min_{\mathbf u\ge0}\ \frac12\|A\mathbf u-\mathbf b\|^2+\frac12\sum_i\lambda_i^{(k)}(L\mathbf u)_i^2$
+      \hfill (Newton Projection, warm start $\mathbf u^{(k)}$)
+\item $S_i^{(k+1)}=\max_{j\in\mathcal N_i}(L\mathbf u^{(k+1)})_j^2$ \hfill (max filter, periodic)
+\item $\lambda_i^{(k+1)}=\|A\mathbf u^{(k+1)}-\mathbf b\|^2/\big(N(S_i^{(k+1)}+\epsilon)\big)$
+\item stop when $\|\boldsymbol\lambda^{(k+1)}-\boldsymbol\lambda^{(k)}\|\le\mathrm{Tol}\,\|\boldsymbol\lambda^{(k+1)}\|$ \hfill ($\mathrm{Tol}=10^{-1}$, at most 20 iterations)
+\end{enumerate}
+\end{minipage}}
+\end{center}
+
+\subsection{Inner solver: modified Newton Projection (NP)}
+For a fixed $\boldsymbol\lambda$, the objective
+$\mathcal J(\mathbf u)=\frac12\|A\mathbf u-\mathbf b\|^2+\frac12\sum_i\lambda_i(L\mathbf u)_i^2$
+is a strictly convex quadratic with gradient
+$\mathbf g=A^T(A\mathbf u-\mathbf b)+L^T\Lambda L\mathbf u$ and Hessian
+$A^TA+L^T\Lambda L$. The Hessian is \emph{not} BCCB, because $\Lambda$ varies
+spatially. Following the paper, we replace it with the BCCB approximation
+\begin{equation}
+  H = A^TA+\mu L^TL,\qquad \mu=\operatorname{mean}(\lambda_1,\dots,\lambda_N),
+  \label{eq:H}
+\end{equation}
+which is inverted with two FFTs. One NP iteration is:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item Compute the active set
+  $\mathcal I=\{i:\ 0\le u_i\le\varepsilon_k,\ g_i>0\}$, with
+  $\varepsilon_k=\min\{\bar\varepsilon,\ \|\mathbf u-[\mathbf u-\mathbf g]^+\|\}$.
+  These are the pixels pinned at the bound $u\ge0$.
+\item Compute the reduced gradient $\mathbf g_{\mathcal I}$ ($=\mathbf g$ with the
+  entries in $\mathcal I$ set to zero), solve $H\mathbf d=\mathbf g_{\mathcal I}$ by FFT,
+  and set $p_i=d_i$ for $i\notin\mathcal I$ and $p_i=g_i$ for $i\in\mathcal I$.
+\item Projected Armijo search: take $\alpha=\beta^m$ ($\beta=0.5$, $\eta=10^{-4}$), the first value for which
+  $\mathcal J(\mathbf u)-\mathcal J([\mathbf u-\alpha\mathbf p]^+)\ \ge\ \eta\big(\alpha\sum_{i\notin\mathcal I}g_ip_i+\sum_{i\in\mathcal I}g_i(u_i-[\mathbf u-\alpha\mathbf p]^+_i)\big)$,
+  and set $\mathbf u\leftarrow[\mathbf u-\alpha\mathbf p]^+$.
+\end{enumerate}
+The NP iterations stop when the relative change in $\mathbf u$ or the relative
+projected-gradient norm falls below $10^{-5}$, or after 1000 iterations. Because $H$ is
+constant and positive definite, the convergence theory of~\cite{landi2012} applies.
+One NP iteration costs about 6 FFTs of size $N$.
+
+\paragraph{Implementation notes (our code).}
+Everything is written from scratch in Python/NumPy (\texttt{src/}): operators and
+FFT eigenvalues (\texttt{operators.py}), MULTI and NP (\texttt{multi.py}), and the
+baselines (\texttt{baselines.py}). We added one safeguard that the paper does not
+mention. If $\sum_{i\notin\mathcal I}g_ip_i\le0$, which can happen because $H^{-1}$ couples
+free and active pixels, we fall back to the projected-gradient direction.
+In our runs this safeguard almost never triggers.

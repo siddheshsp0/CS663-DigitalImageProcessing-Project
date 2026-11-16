@@ -1,0 +1,49 @@
+refine satellite_oof_0.025          RE 0.1503 -> 0.1503
+refine satellite_oof_0.01           RE 0.1119 -> 0.1104
+refine satellite_oof_0.005          RE 0.0823 -> 0.0809
+refine satellite_gauss_0.025        RE 0.1365 -> 0.1365
+refine satellite_gauss_0.01         RE 0.1218 -> 0.1218
+refine satellite_gauss_0.005        RE 0.1116 -> 0.1112
+refine ct_head_oof_0.025            RE 0.0889 -> 0.0888
+refine ct_head_oof_0.01             RE 0.0640 -> 0.0575
+refine ct_head_oof_0.005            RE 0.0561 -> 0.0459
+refine ct_head_gauss_0.025          RE 0.0604 -> 0.0604
+refine ct_head_gauss_0.01           RE 0.0489 -> 0.0465
+refine ct_head_gauss_0.005          RE 0.0432 -> 0.0395
+refine cat_oof_0.025                RE 0.0774 -> 0.0774
+refine cat_oof_0.01                 RE 0.0654 -> 0.0654
+refine cat_oof_0.005                RE 0.0582 -> 0.0571
+refine cat_gauss_0.025              RE 0.0587 -> 0.0587
+refine cat_gauss_0.01               RE 0.0501 -> 0.0501
+refine cat_gauss_0.005              RE 0.0447 -> 0.0447
+refine portrait_oof_0.025           RE 0.0852 -> 0.0852
+refine portrait_oof_0.01            RE 0.0709 -> 0.0709
+refine portrait_oof_0.005           RE 0.0656 -> 0.0579
+refine portrait_gauss_0.025         RE 0.0659 -> 0.0659
+refine portrait_gauss_0.01          RE 0.0574 -> 0.0574
+refine portrait_gauss_0.005         RE 0.0520 -> 0.0520
+kappa = 3162.28  (mean RE loss 11.82%)
+auto satellite_oof_0.025
+auto satellite_oof_0.01
+auto satellite_oof_0.005
+auto satellite_gauss_0.025
+auto satellite_gauss_0.01
+auto satellite_gauss_0.005
+auto ct_head_oof_0.025
+auto ct_head_oof_0.01
+auto ct_head_oof_0.005
+auto ct_head_gauss_0.025
+auto ct_head_gauss_0.01
+auto ct_head_gauss_0.005
+auto cat_oof_0.025
+auto cat_oof_0.01
+auto cat_oof_0.005
+auto cat_gauss_0.025
+auto cat_gauss_0.01
+auto cat_gauss_0.005
+auto portrait_oof_0.025
+auto portrait_oof_0.01
+auto portrait_oof_0.005
+auto portrait_gauss_0.025
+auto portrait_gauss_0.01
+auto portrait_gauss_0.005
